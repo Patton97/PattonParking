@@ -1,7 +1,9 @@
 #pragma once
+
+#include <iostream>
+
 #include "Player.h"
 #include "PlayerController.h"
-#include <iostream>
 
 Player::Player()
 {
@@ -27,11 +29,10 @@ void Player::addMovement(const sf::Vector2f& addMovement)
 
 void Player::update(sf::RenderWindow& window, sf::Event& ev, sf::Clock& deltaClock)
 {
-    this->m_movementVector->x = this->m_movementVector->y = 0;
-    this->m_controller->Update(deltaClock);
+    this->m_movementVector->x = this->m_movementVector->y = 0; 
+    this->m_controller->update(deltaClock);
     *this->m_movementVector *= deltaClock.getElapsedTime().asSeconds();
     this->move();
-    this->draw(window);
 }
 
 void Player::move()
@@ -41,7 +42,7 @@ void Player::move()
     //std::cout << "(" << this->m_movementVector->x << ", " << this->m_movementVector->y << ")" << std::endl;
 }
 
-void Player::draw(sf::RenderWindow& window)
+void Player::render(sf::RenderWindow& window)
 {
     window.draw(*this->m_sprite);
 }

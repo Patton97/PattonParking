@@ -1,15 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-class PlayerController;
+#include "PlayerController.h"
 
 class Player
 {
     public:
-        inline Player();
-        inline void update(sf::RenderWindow& window, sf::Event& ev, sf::Clock& deltaClock);
-        inline void addMovement(const sf::Vector2f& addMovement);
-
+        Player();
+        void update(sf::RenderWindow& window, sf::Event& ev, sf::Clock& deltaClock);
+        void render(sf::RenderWindow& window);
+        void addMovement(const sf::Vector2f& addMovement);
         PlayerController* m_controller;
 
     private:
@@ -18,7 +17,6 @@ class Player
         sf::Sprite* m_sprite;
         sf::Vector2f* m_movementVector;
 
-        inline void move();
-        inline void draw(sf::RenderWindow& window);
+        void move();
 };
 

@@ -1,7 +1,6 @@
 #pragma once
 #include "PlayerController.h"
 #include "Player.h"
-
 /// <summary>
 /// 
 /// </summary>
@@ -12,11 +11,11 @@ PlayerController::PlayerController(Player* player)
 }
 
 /// <summary>
-/// Called once per tick, prior to <see cref="PlayerController::EventUpdate"/>
+/// Called once per tick, prior to <see cref="PlayerController::eventUpdate"/>
 /// </summary>
-void PlayerController::PreEventUpdate()
+void PlayerController::preEventUpdate()
 {
-    this->m_isMoveForwardKeyPressed = this->m_isMoveBackwardKeyPressed = this->m_isMoveLeftKeyPressed = this->m_isMoveRightKeyPressed = false;
+    //this->m_isMoveForwardKeyPressed = this->m_isMoveBackwardKeyPressed = this->m_isMoveLeftKeyPressed = this->m_isMoveRightKeyPressed = false;
 }
 
 /// <summary>
@@ -30,8 +29,9 @@ bool PlayerController::IsKeyInArray(const sf::Keyboard::Key &pressedKeyCode, sf:
     return std::find(std::begin(keys), std::end(keys), pressedKeyCode) != std::end(keys);
 }
 
-void PlayerController::EventUpdate(sf::Event& ev)
+void PlayerController::eventUpdate(sf::Event& ev)
 {
+    /*
     bool isKeyPressedEvent = ev.type == sf::Event::KeyPressed;
     bool isKeyReleasedEvent = ev.type == sf::Event::KeyReleased;
     bool isKeyEvent = isKeyPressedEvent || isKeyReleasedEvent;
@@ -54,26 +54,44 @@ void PlayerController::EventUpdate(sf::Event& ev)
             this->m_isMoveRightKeyPressed = true;
         }
     }
-    
+    */
 }
 
-void PlayerController::Update(sf::Clock& deltaClock)
+/// <summary>
+/// Checks to see if any <see cref="sf::Keyboard::Key"/> in the provided array <paramref name="keys"/> is currently pressed.
+/// </summary>
+/// <param name="keys">A reference to an array of <see cref="sf::Keyboard::Key"/>s to be checked.</param>
+/// <returns><see langword="true"/>, if one or more keys in the provided array <paramref name="keys"/> is pressed; otherwise, <see langword="false"/></returns>
+bool PlayerController::IsAnyKeyPressed(sf::Keyboard::Key(&keys)[2])
+{
+    for (const auto& key : keys)
+    {
+        if (sf::Keyboard::isKeyPressed(key))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void PlayerController::update(sf::Clock& deltaClock)
 {
     sf::Vector2f* movementVector = new sf::Vector2f();
 
-    if (this->m_isMoveForwardKeyPressed)
+    if (PlayerController::IsAnyKeyPressed(this->m_moveForwardKeys))
     {
         movementVector->y += ACCELERATION_SPEED;
     }
-    if (this->m_isMoveBackwardKeyPressed)
+    if (PlayerController::IsAnyKeyPressed(this->m_moveBackwardKeys))
     {
         movementVector->y += DECCELERATION_SPEED;
     }
-    if (this->m_isMoveLeftKeyPressed)
+    if (PlayerController::IsAnyKeyPressed(this->m_turnLeftKeys))
     {
         movementVector->x += -TURN_SPEED; // i know this is dumb its just temp
     }
-    if (this->m_isMoveRightKeyPressed)
+    if (PlayerController::IsAnyKeyPressed(this->m_turnRightKeys))
     {
         movementVector->x += TURN_SPEED; // temp
     }
