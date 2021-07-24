@@ -2,17 +2,14 @@
 
 #include <iostream>
 
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
+#include <SFML\Graphics.hpp>
+#include <SFML\System.hpp>
 
-#include "Player.h"
+#include "GameObject.h"
 
 class GameManager
 {
-    public: 
+    public:
         // construction
         GameManager();
         virtual ~GameManager();
@@ -26,27 +23,27 @@ class GameManager
         void render();
 
         // variables
-        sf::Clock deltaClock;
         sf::Clock clock;
-    private: 
+        sf::Clock deltaClock;
+    private:
         // methods
         void start();
         void initWindow();
-        void updateFPS();
+        void updateDeltaTime();
 
         // variables
-        sf::RenderWindow* window;
-        sf::VideoMode* videoMode;
-        sf::Event ev;
-        std::string windowTitle;
-        sf::Uint32 windowStyle;
-        //std::vector<GameObject*> gameObject = {};
-
-        Player* player;
-
-        sf::Text* fpsText = new sf::Text();
-        sf::Font* fpsTextFont = new sf::Font();
+        sf::RenderWindow* window = nullptr;
+        sf::VideoMode* videoMode = nullptr;
+        sf::Event ev = sf::Event();
+        std::string windowTitle = std::string();
+        sf::Uint32 windowStyle = 0;
+        std::vector<GameObject*> gameObjects = {};
+        
         sf::Time previousTime = sf::Time();
         sf::Time currentTime = sf::Time();
+        sf::Time deltaTime = sf::Time::Zero;
+public:
+    GameManager(GameManager const&) = delete;
+    void operator=(GameManager const&) = delete;
 };
 

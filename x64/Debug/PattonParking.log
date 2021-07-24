@@ -1,2 +1,6 @@
-﻿  GameManager.cpp
+﻿  FPSMonitor.cpp
+  GameManager.cpp
+  Player.cpp
+  PlayerController.cpp
+  Generating Code...
   PattonParking.vcxproj -> C:\Users\User\Documents\GitHub\PattonParking\x64\Debug\PattonParking.exe

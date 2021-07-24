@@ -1,6 +1,13 @@
 #pragma once
+
+#include <SFML\System\Time.hpp>
+#include <SFML\Window\Event.hpp>
+
 class Updateable
 {
-    virtual void update() = 0;
+    public:
+        virtual void preEventUpdate() {};
+        virtual void eventUpdate(sf::Event& ev) {};
+        virtual void update(sf::Time& deltaTime) {};
 };
 

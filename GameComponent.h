@@ -1,8 +1,8 @@
 #pragma once
 #include "Updateable.h"
-class GameComponent : Updateable
+
+class GameComponent : public Updateable
 {
-    public:
-        virtual void update() override = 0;
+
 };
 

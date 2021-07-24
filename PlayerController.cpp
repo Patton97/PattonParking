@@ -1,13 +1,18 @@
 #pragma once
 #include "PlayerController.h"
 #include "Player.h"
+#include <iostream>
 /// <summary>
 /// 
 /// </summary>
 /// <param name="player"></param>
-PlayerController::PlayerController(Player* player)
+PlayerController::PlayerController(sf::Transformable& player)
 {
-    this->m_player = player;
+    this->m_player = &player;
+}
+
+PlayerController::~PlayerController()
+{
 }
 
 /// <summary>
@@ -52,30 +57,42 @@ bool PlayerController::IsAnyKeyPressed(sf::Keyboard::Key(&keys)[2])
     return false;
 }
 
-void PlayerController::update(sf::Clock& deltaClock)
+void PlayerController::update(sf::Time& deltaTime)
 {
-    float movementSpeed = 0.0f;
-    float rotationSpeed = 0.0f;
+    //TODO: this->updateMovementAndRotation();
 
     if (PlayerController::IsAnyKeyPressed(this->m_moveForwardKeys))
     {
-        movementSpeed += ACCELERATION_SPEED;
+        this->m_movementSpeed += ACCELERATION_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_moveBackwardKeys))
     {
-        movementSpeed += DECCELERATION_SPEED;
+        this->m_movementSpeed += DECCELERATION_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnLeftKeys))
     {
-        rotationSpeed -= TURN_SPEED;
+        this->m_rotationSpeed -= TURN_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnRightKeys))
     {
-        rotationSpeed += TURN_SPEED;
+        this->m_rotationSpeed += TURN_SPEED;
     }
-    //movementSpeed = std::clamp(movementSpeed, -PlayerController::MAX_SPEED, PlayerController::MAX_SPEED);
-    //rotationSpeed = std::clamp(rotationSpeed, -PlayerController::MAX_SPEED, PlayerController::MAX_SPEED);
 
-    this->m_player->addMovementSpeed(movementSpeed);
-    this->m_player->addRotationSpeed(rotationSpeed);
+
+    float angleRADS = (3.1415926536f / 180.0f) * (this->m_player->getRotation());
+
+    float fwdX = sin(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
+    float fwdY = -cos(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
+    std::cout << std::fixed;
+    std::cout << "dt: " << deltaTime.asSeconds() << std::endl;
+    //std::cout << "Moving: (" << fwdX << ", " << fwdY << ")" << std::endl;
+
+    //this->m_movementSpeed *= deltaClock.getElapsedTime().asSeconds()
+    this->m_player->move(fwdX, fwdY);
+    this->m_player->rotate(this->m_rotationSpeed *= deltaTime.asSeconds());
+    //std::cout << "(" << this->m_sprite->getPosition().x << ", " << this->m_sprite->getPosition().y << ")" << std::endl;
+    //std::cout << "(" << this->m_movementVector->x << ", " << this->m_movementVector->y << ")" << std::endl;
+
+    this->m_movementSpeed = 0.0f;
+    this->m_rotationSpeed = 0.0f;
 }

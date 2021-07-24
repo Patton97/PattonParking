@@ -1,6 +1,6 @@
 #pragma once
 #include "GameManager.h"
-
+#include "FPSMonitor.h"
 #include "Player.h"
 
 GameManager::GameManager()
@@ -11,8 +11,6 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-    delete this->window;
-    delete this->videoMode;
 }
 
 const bool GameManager::isWindowOpen() const
@@ -30,25 +28,19 @@ void GameManager::initWindow()
 
 void GameManager::start()
 {
-    this->deltaClock = sf::Clock::Clock();
     this->clock = sf::Clock::Clock();
-    this->previousTime = this->clock.getElapsedTime();
-    this->window = nullptr;
-    this->player = new Player();
-
-    if (!this->fpsTextFont->loadFromFile(".\\assets\\fonts\\cour.ttf"))
+    Player* player = new Player();
+    this->gameObjects.push_back(player);
+    this->gameObjects.push_back(&FPSMonitor::getInstance());
+    
+    for (auto& go : this->gameObjects)
     {
-        std::cout << "Font failed to load" << std::endl;
+        go->start();
     }
-    fpsText->setFillColor(sf::Color::Red);
-    fpsText->setFont(*fpsTextFont);
-
-    initWindow();
 }
 
 void GameManager::eventUpdate()
 {
-    sf::Time deltaTime = this->deltaClock.restart();
     // while we're receiving events from the window, store them into ev
     while (this->window->pollEvent(ev))
     {
@@ -60,36 +52,38 @@ void GameManager::eventUpdate()
             default:
                 break;
         }
+    }
 
-        //this->player->m_controller->eventUpdate(ev);
+    for (auto& go : this->gameObjects)
+    {
+        go->eventUpdate(ev);
     }
 }
 
 void GameManager::update()
 {
-    this->deltaClock.restart();
-    this->updateFPS();
-    this->player->update(*this->window, ev, this->deltaClock);
+    this->updateDeltaTime();
+    for (auto& go : this->gameObjects)
+    {
+        go->update(this->deltaTime);
+    }
 }
 
 void GameManager::render()
 {
     this->window->clear(sf::Color::Black);
-    this->window->draw(*fpsText);
-
-    this->player->render(*this->window);
+    
+    for (auto& go : this->gameObjects)
+    {
+        go->render(*this->window);
+    }
 
     this->window->display();
 }
 
-void GameManager::updateFPS()
+void GameManager::updateDeltaTime()
 {
-    float fps;
-    this->currentTime = this->clock.getElapsedTime();
-
-    fps = 1.0f / (this->currentTime.asSeconds() - this->previousTime.asSeconds());
+    this->currentTime = clock.getElapsedTime();
+    this->deltaTime = this->currentTime - this->previousTime;
     this->previousTime = currentTime;
-
-    this->fpsText->setOrigin(50.0f - (*this->window).getSize().x, 0.0f);
-    this->fpsText->setString(std::to_string(floor(fps)));
 }

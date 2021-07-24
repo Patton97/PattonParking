@@ -155,20 +155,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FPSMonitor.cpp" />
     <ClCompile Include="GameComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="Renderable.cpp" />
     <ClCompile Include="Updateable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FPSMonitor.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="Renderable.h" />
     <ClInclude Include="Updateable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
