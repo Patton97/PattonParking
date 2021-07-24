@@ -54,8 +54,8 @@ void Player::updateMovement(sf::Clock& deltaClock)
     //M_PI
     float angleRADS = (3.1415926536f / 180.0f) * (this->m_sprite->getRotation());
 
-    float fwdY = cos(angleRADS) * m_movementSpeed * deltaClock.getElapsedTime().asSeconds();
-    float fwdX = -sin(angleRADS) * m_movementSpeed * deltaClock.getElapsedTime().asSeconds();
+    float fwdX = sin(angleRADS) * m_movementSpeed * deltaClock.getElapsedTime().asSeconds();
+    float fwdY = -cos(angleRADS) * m_movementSpeed * deltaClock.getElapsedTime().asSeconds();
 
     //std::cout << "Moving: (" << fwdX << ", " << fwdY << ")" << std::endl;
     

@@ -68,6 +68,7 @@ void GameManager::eventUpdate()
 void GameManager::update()
 {
     this->deltaClock.restart();
+    this->updateFPS();
     this->player->update(*this->window, ev, this->deltaClock);
 }
 
@@ -83,7 +84,6 @@ void GameManager::render()
 
 void GameManager::updateFPS()
 {
-    // fps shennanigans
     float fps;
     this->currentTime = this->clock.getElapsedTime();
 

@@ -25,7 +25,7 @@ class PlayerController
 #pragma endregion
 
 #pragma region member methods
-        const float ACCELERATION_SPEED = -10000.0f;
+        const float ACCELERATION_SPEED = 10000.0f;
         const float DECCELERATION_SPEED = ACCELERATION_SPEED * -0.8f;
         const float TURN_SPEED = 10000.0f;
 #pragma endregion
