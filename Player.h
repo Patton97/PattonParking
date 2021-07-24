@@ -5,18 +5,25 @@
 class Player
 {
     public:
+        // constructor
         Player();
+        // methods
         void update(sf::RenderWindow& window, sf::Event& ev, sf::Clock& deltaClock);
         void render(sf::RenderWindow& window);
-        void addMovement(const sf::Vector2f& addMovement);
+        void addMovementSpeed(float amount);
+        void addRotationSpeed(float amount);
+        // variables
         PlayerController* m_controller;
 
     private:
+        // methods
+        void updateMovement(sf::Clock& deltaClock);
+        void updateRotation(sf::Clock& deltaClock);
+        // variables
         sf::Image* m_image;
         sf::Texture* m_texture;
         sf::Sprite* m_sprite;
-        sf::Vector2f* m_movementVector;
-
-        void move();
+        float m_movementSpeed;
+        float m_rotationSpeed;
 };
 

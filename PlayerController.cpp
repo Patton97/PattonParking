@@ -31,30 +31,7 @@ bool PlayerController::IsKeyInArray(const sf::Keyboard::Key &pressedKeyCode, sf:
 
 void PlayerController::eventUpdate(sf::Event& ev)
 {
-    /*
-    bool isKeyPressedEvent = ev.type == sf::Event::KeyPressed;
-    bool isKeyReleasedEvent = ev.type == sf::Event::KeyReleased;
-    bool isKeyEvent = isKeyPressedEvent || isKeyReleasedEvent;
-    if (isKeyEvent)
-    {
-        if (PlayerController::IsKeyInArray(ev.key.code, this->m_moveForwardKeys))
-        {
-            this->m_isMoveForwardKeyPressed = true;
-        }
-        if (PlayerController::IsKeyInArray(ev.key.code, this->m_moveBackwardKeys))
-        {
-            this->m_isMoveBackwardKeyPressed = true;
-        }
-        if (PlayerController::IsKeyInArray(ev.key.code, this->m_turnLeftKeys))
-        {
-            this->m_isMoveLeftKeyPressed = true;
-        }
-        if (PlayerController::IsKeyInArray(ev.key.code, this->m_turnRightKeys))
-        {
-            this->m_isMoveRightKeyPressed = true;
-        }
-    }
-    */
+   
 }
 
 /// <summary>
@@ -77,30 +54,28 @@ bool PlayerController::IsAnyKeyPressed(sf::Keyboard::Key(&keys)[2])
 
 void PlayerController::update(sf::Clock& deltaClock)
 {
-    sf::Vector2f* movementVector = new sf::Vector2f();
+    float movementSpeed = 0.0f;
+    float rotationSpeed = 0.0f;
 
     if (PlayerController::IsAnyKeyPressed(this->m_moveForwardKeys))
     {
-        movementVector->y += ACCELERATION_SPEED;
+        movementSpeed += ACCELERATION_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_moveBackwardKeys))
     {
-        movementVector->y += DECCELERATION_SPEED;
+        movementSpeed += DECCELERATION_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnLeftKeys))
     {
-        movementVector->x += -TURN_SPEED; // i know this is dumb its just temp
+        rotationSpeed -= TURN_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnRightKeys))
     {
-        movementVector->x += TURN_SPEED; // temp
+        rotationSpeed += TURN_SPEED;
     }
-    movementVector->x = std::clamp(movementVector->x, -PlayerController::MAX_SPEED, PlayerController::MAX_SPEED);
-    movementVector->y = std::clamp(movementVector->y, -PlayerController::MAX_SPEED, PlayerController::MAX_SPEED);
+    //movementSpeed = std::clamp(movementSpeed, -PlayerController::MAX_SPEED, PlayerController::MAX_SPEED);
+    //rotationSpeed = std::clamp(rotationSpeed, -PlayerController::MAX_SPEED, PlayerController::MAX_SPEED);
 
-    this->m_player->addMovement(*movementVector);
-
-
-    delete movementVector;
-    movementVector = nullptr;
+    this->m_player->addMovementSpeed(movementSpeed);
+    this->m_player->addRotationSpeed(rotationSpeed);
 }
