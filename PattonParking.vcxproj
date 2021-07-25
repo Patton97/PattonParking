@@ -163,6 +163,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="Renderable.cpp" />
+    <ClCompile Include="TimeKeeper.cpp" />
     <ClCompile Include="Updateable.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +174,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Renderable.h" />
+    <ClInclude Include="TimeKeeper.h" />
     <ClInclude Include="Updateable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

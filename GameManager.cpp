@@ -1,5 +1,6 @@
 #pragma once
 #include "GameManager.h"
+#include "TimeKeeper.h"
 #include "FPSMonitor.h"
 #include "Player.h"
 
@@ -28,11 +29,10 @@ void GameManager::initWindow()
 
 void GameManager::start()
 {
-    this->clock = sf::Clock::Clock();
-    Player* player = new Player();
-    this->gameObjects.push_back(player);
-    this->gameObjects.push_back(&FPSMonitor::getInstance());
-    
+    this->gameObjects.push_back(&TimeKeeper::getInstance());
+    this->gameObjects.push_back(&FPSMonitor::getInstance()); 
+    this->gameObjects.push_back(new Player());
+
     for (auto& go : this->gameObjects)
     {
         go->start();
@@ -62,10 +62,9 @@ void GameManager::eventUpdate()
 
 void GameManager::update()
 {
-    this->updateDeltaTime();
     for (auto& go : this->gameObjects)
     {
-        go->update(this->deltaTime);
+        go->update(TimeKeeper::getInstance().getDeltaTime());
     }
 }
 
@@ -79,11 +78,4 @@ void GameManager::render()
     }
 
     this->window->display();
-}
-
-void GameManager::updateDeltaTime()
-{
-    this->currentTime = clock.getElapsedTime();
-    this->deltaTime = this->currentTime - this->previousTime;
-    this->previousTime = currentTime;
 }

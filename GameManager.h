@@ -21,15 +21,10 @@ class GameManager
         void eventUpdate();
         void update();
         void render();
-
-        // variables
-        sf::Clock clock;
-        sf::Clock deltaClock;
     private:
         // methods
         void start();
         void initWindow();
-        void updateDeltaTime();
 
         // variables
         sf::RenderWindow* window = nullptr;
@@ -38,12 +33,5 @@ class GameManager
         std::string windowTitle = std::string();
         sf::Uint32 windowStyle = 0;
         std::vector<GameObject*> gameObjects = {};
-        
-        sf::Time previousTime = sf::Time();
-        sf::Time currentTime = sf::Time();
-        sf::Time deltaTime = sf::Time::Zero;
-public:
-    GameManager(GameManager const&) = delete;
-    void operator=(GameManager const&) = delete;
 };
 
