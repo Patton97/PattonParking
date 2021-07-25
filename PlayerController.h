@@ -12,7 +12,6 @@ class PlayerController : public GameComponent
 #pragma endregion
 
 #pragma region member methods
-        void preEventUpdate() override;
         void eventUpdate(sf::Event& ev) override;
         void update(sf::Time& deltaTime) override;
 #pragma endregion

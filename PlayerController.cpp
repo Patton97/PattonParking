@@ -1,7 +1,12 @@
 #pragma once
+
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <iostream>
+
 #include "PlayerController.h"
 #include "Player.h"
-#include <iostream>
+
 /// <summary>
 /// 
 /// </summary>
@@ -13,14 +18,8 @@ PlayerController::PlayerController(sf::Transformable& player)
 
 PlayerController::~PlayerController()
 {
-}
-
-/// <summary>
-/// Called once per tick, prior to <see cref="PlayerController::eventUpdate"/>
-/// </summary>
-void PlayerController::preEventUpdate()
-{
-    //this->m_isMoveForwardKeyPressed = this->m_isMoveBackwardKeyPressed = this->m_isMoveLeftKeyPressed = this->m_isMoveRightKeyPressed = false;
+    delete this->m_player;
+    this->m_player = nullptr;
 }
 
 /// <summary>
@@ -77,9 +76,9 @@ void PlayerController::update(sf::Time& deltaTime)
     {
         this->m_rotationSpeed += TURN_SPEED;
     }
+    
 
-
-    float angleRADS = (3.1415926536f / 180.0f) * (this->m_player->getRotation());
+    float angleRADS = (M_PI / 180.0f) * (this->m_player->getRotation());
 
     float fwdX = sin(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
     float fwdY = -cos(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
