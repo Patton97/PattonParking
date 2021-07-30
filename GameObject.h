@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+#include <SFML\Graphics\Transformable.hpp>
+
 #include "Updateable.h"
 #include "Renderable.h"
 #include "GameComponent.h"
@@ -21,6 +23,7 @@ class GameObject : public Updateable, public Renderable
         {
             this->m_components.push_back(&componentToAdd);
         }
+        sf::Transformable* m_transform = new sf::Transformable();
     private:
         std::vector<GameComponent*> m_components = {};
 };

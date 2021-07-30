@@ -70,28 +70,23 @@ void PlayerController::update(sf::Time& deltaTime)
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnLeftKeys))
     {
-        this->m_rotationSpeed -= TURN_SPEED;
+        this->m_turnAmount -= TURN_SPEED;
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnRightKeys))
     {
-        this->m_rotationSpeed += TURN_SPEED;
+        this->m_turnAmount += TURN_SPEED;
     }
-    
+
+    this->m_turnAmount = std::clamp(this->m_turnAmount, MIN_TURN_AMOUNT, MAX_TURN_AMOUNT);
 
     float angleRADS = (M_PI / 180.0f) * (this->m_player->getRotation());
 
     float fwdX = sin(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
     float fwdY = -cos(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
-    std::cout << std::fixed;
-    std::cout << "dt: " << deltaTime.asSeconds() << std::endl;
-    //std::cout << "Moving: (" << fwdX << ", " << fwdY << ")" << std::endl;
 
-    //this->m_movementSpeed *= deltaClock.getElapsedTime().asSeconds()
     this->m_player->move(fwdX, fwdY);
-    this->m_player->rotate(this->m_rotationSpeed *= deltaTime.asSeconds());
-    //std::cout << "(" << this->m_sprite->getPosition().x << ", " << this->m_sprite->getPosition().y << ")" << std::endl;
-    //std::cout << "(" << this->m_movementVector->x << ", " << this->m_movementVector->y << ")" << std::endl;
+
+    this->m_player->rotate(this->m_turnAmount *= deltaTime.asSeconds());
 
     this->m_movementSpeed = 0.0f;
-    this->m_rotationSpeed = 0.0f;
 }

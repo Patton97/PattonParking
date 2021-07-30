@@ -70,7 +70,7 @@ void GameManager::update()
 
 void GameManager::render()
 {
-    this->window->clear(sf::Color::Black);
+    this->window->clear(sf::Color::Color(0x3f, 0x3f, 0x3f, 0xff));
     
     for (auto& go : this->gameObjects)
     {
