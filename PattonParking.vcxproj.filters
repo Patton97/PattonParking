@@ -48,6 +48,12 @@
     <ClCompile Include="SpriteWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="prefabs\CarBodyPrefab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="prefabs\CarWheelPrefab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -78,6 +84,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SpriteWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prefabs\CarBodyPrefab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prefabs\CarWheelPrefab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

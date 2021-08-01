@@ -39,7 +39,6 @@ void SpriteWrapper::setImage(std::string imageSource)
     this->m_texture->loadFromImage(*this->m_image);
 
     this->m_sprite = new sf::Sprite(*this->m_texture);
-
     this->m_sprite->setOrigin(sf::Vector2f(this->m_texture->getSize()) * 0.5f);
 }
 
