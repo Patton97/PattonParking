@@ -1,19 +1,17 @@
 #pragma once
 
-#define _USE_MATH_DEFINES
-#include <math.h>
 #include <iostream>
 
 #include "PlayerController.h"
-#include "Player.h"
+
 
 /// <summary>
 /// 
 /// </summary>
 /// <param name="player"></param>
-PlayerController::PlayerController(sf::Transformable& player)
+PlayerController::PlayerController(Player* player)
 {
-    this->m_player = &player;
+    this->m_player = player;
 }
 
 PlayerController::~PlayerController()
@@ -58,35 +56,34 @@ bool PlayerController::IsAnyKeyPressed(sf::Keyboard::Key(&keys)[2])
 
 void PlayerController::update(sf::Time& deltaTime)
 {
-    //TODO: this->updateMovementAndRotation();
+    this->updateSpeed(deltaTime);
+    this->updateRotation(deltaTime);
+}
 
+void PlayerController::updateSpeed(sf::Time& deltaTime)
+{
+    this->m_movementSpeed = 0;
     if (PlayerController::IsAnyKeyPressed(this->m_moveForwardKeys))
     {
-        this->m_movementSpeed += ACCELERATION_SPEED;
+        this->m_movementSpeed += ACCELERATION_SPEED * deltaTime.asSeconds();
     }
     if (PlayerController::IsAnyKeyPressed(this->m_moveBackwardKeys))
     {
-        this->m_movementSpeed += DECCELERATION_SPEED;
+        this->m_movementSpeed += DECCELERATION_SPEED * deltaTime.asSeconds();
     }
+    this->m_player->setSpeed(this->m_movementSpeed);
+}
+
+void PlayerController::updateRotation(sf::Time& deltaTime)
+{
     if (PlayerController::IsAnyKeyPressed(this->m_turnLeftKeys))
     {
-        this->m_turnAmount -= TURN_SPEED;
+        this->m_turnAmount -= TURN_SPEED * deltaTime.asSeconds();
     }
     if (PlayerController::IsAnyKeyPressed(this->m_turnRightKeys))
     {
-        this->m_turnAmount += TURN_SPEED;
+        this->m_turnAmount += TURN_SPEED * deltaTime.asSeconds();
     }
-
     this->m_turnAmount = std::clamp(this->m_turnAmount, MIN_TURN_AMOUNT, MAX_TURN_AMOUNT);
-
-    float angleRADS = (M_PI / 180.0f) * (this->m_player->getRotation());
-
-    float fwdX = sin(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
-    float fwdY = -cos(angleRADS) * m_movementSpeed * deltaTime.asSeconds();
-
-    this->m_player->move(fwdX, fwdY);
-
-    this->m_player->rotate(this->m_turnAmount *= deltaTime.asSeconds());
-
-    this->m_movementSpeed = 0.0f;
+    this->m_player->setTurnAmount(this->m_turnAmount);
 }

@@ -1,6 +1,6 @@
-#include <math.h>
-
 #define _USE_MATH_DEFINES
+#include <math.h>
+#include <iostream>
 
 #include "CarWheelPrefab.h"
 
@@ -9,13 +9,14 @@ CarWheelPrefab::CarWheelPrefab(GameObject* parent, sf::Vector2f positionOffset, 
     this->setParent(parent);
     this->m_positionOffset = positionOffset;
     this->m_rotationOffset = rotationOffset;
+    this->addChild(*this->m_rectangleGizmo);
 }
 
 CarWheelPrefab::~CarWheelPrefab()
 {
 
 }
-#include <iostream>
+
 void CarWheelPrefab::update(sf::Time& deltaTime)
 {
     GameObject::update(deltaTime);
@@ -31,6 +32,8 @@ void CarWheelPrefab::update(sf::Time& deltaTime)
     this->m_transform->setPosition(newPosition);
 
     this->m_transform->setRotation(this->m_parent->getRotation() + this->m_rotationOffset);
+
+    //std::cout << "RotOffset: " << this->m_rotationOffset << std::endl;
 }
 
 void CarWheelPrefab::render(sf::RenderWindow& window)

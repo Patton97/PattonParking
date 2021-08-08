@@ -10,7 +10,10 @@ class SpriteWrapper : Renderable
         void render(sf::RenderWindow& window) override;
         void setImage(std::string imageSource);
         void setTransform(sf::Transformable* transform);
-
+        sf::IntRect getRect()
+        {
+            return this->m_sprite->getTextureRect();
+        }
     private:
         sf::Image* m_image = nullptr;
         sf::Texture* m_texture = nullptr;

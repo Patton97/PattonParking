@@ -25,6 +25,7 @@ class GameManager
         // methods
         void start();
         void initWindow();
+        void cycleRenderMode();
 
         // variables
         sf::RenderWindow* window = nullptr;
@@ -33,5 +34,8 @@ class GameManager
         std::string windowTitle = std::string();
         sf::Uint32 windowStyle = 0;
         std::vector<GameObject*> gameObjects = {};
+
+        enum class RenderMode { All, GizmosOff, GizmosOnly };
+        RenderMode m_renderMode = RenderMode::GizmosOff;
 };
 

@@ -46,6 +46,13 @@ void GameManager::eventUpdate()
     {
         switch (ev.type)
         {
+            case sf::Event::KeyPressed:
+            case sf::Event::KeyReleased:
+                if (ev.key.code == sf::Keyboard::G)
+                {
+                    this->cycleRenderMode();
+                }
+                break;
             case sf::Event::Closed:
                 this->window->close();
                 break;
@@ -74,8 +81,31 @@ void GameManager::render()
     
     for (auto& go : this->gameObjects)
     {
-        go->render(*this->window);
+        if (this->m_renderMode != RenderMode::GizmosOnly)
+        {
+            go->render(*this->window);
+        }
+        if (this->m_renderMode != RenderMode::GizmosOff)
+        {
+            go->renderGizmos(*this->window);
+        }
     }
 
     this->window->display();
+}
+
+void GameManager::cycleRenderMode()
+{
+    switch (this->m_renderMode)
+    {
+        case RenderMode::All:
+            this->m_renderMode = RenderMode::GizmosOff;
+            break;
+        case RenderMode::GizmosOff:
+            this->m_renderMode = RenderMode::GizmosOnly;
+            break;
+        case RenderMode::GizmosOnly:
+            this->m_renderMode = RenderMode::All;
+            break;
+    }
 }

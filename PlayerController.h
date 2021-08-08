@@ -3,17 +3,21 @@
 #include <SFML\System.hpp>
 #include <SFML\Graphics\Transformable.hpp>
 #include "GameComponent.h"
+#include "Player.h"
 class PlayerController : public GameComponent
 {
     public:
 #pragma region constructors/deconstructors
-        PlayerController(sf::Transformable& player);
+        PlayerController(Player* player);
         ~PlayerController();
 #pragma endregion
 
 #pragma region member methods
         void eventUpdate(sf::Event& ev) override;
         void update(sf::Time& deltaTime) override;
+    private:
+        void updateSpeed(sf::Time& deltaTime);
+        void updateRotation(sf::Time& deltaTime);
 #pragma endregion
 
     private:
@@ -26,14 +30,14 @@ class PlayerController : public GameComponent
         const float ACCELERATION_SPEED = 100.0f;
         const float DECCELERATION_SPEED = ACCELERATION_SPEED * -0.8f;
         const float TURN_SPEED = 100.0f;
-        const float MAX_TURN_AMOUNT = 60.0f;
+        const float MAX_TURN_AMOUNT = 45.0f;
         const float MIN_TURN_AMOUNT = -MAX_TURN_AMOUNT;
 
         sf::Keyboard::Key m_moveForwardKeys[2]{ sf::Keyboard::W, sf::Keyboard::Up };
         sf::Keyboard::Key m_moveBackwardKeys[2]{ sf::Keyboard::S, sf::Keyboard::Down };
         sf::Keyboard::Key m_turnLeftKeys[2]{ sf::Keyboard::A, sf::Keyboard::Left };
         sf::Keyboard::Key m_turnRightKeys[2]{ sf::Keyboard::D, sf::Keyboard::Right };
-        sf::Transformable* m_player;
+        Player* m_player = nullptr;
         float m_movementSpeed = 0.0f;
         float m_turnAmount = 0.0f;
 #pragma endregion

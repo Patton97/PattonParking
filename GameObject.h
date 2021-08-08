@@ -30,7 +30,13 @@ class GameObject : public Updateable, public Renderable
                 child->render(window);
             }
         }
-
+        virtual void renderGizmos(sf::RenderWindow& window)
+        {
+            for (auto& child : this->m_children)
+            {
+                child->renderGizmos(window);
+            }
+        }
 
         const sf::Transform& getTransform()
         {

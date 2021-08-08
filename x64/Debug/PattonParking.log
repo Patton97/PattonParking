@@ -1,2 +1,9 @@
-﻿  Player.cpp
+﻿  GameManager.cpp
+  LineGizmo.cpp
+  Player.cpp
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(44,31): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(51,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(67,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  PlayerController.cpp
+  Generating Code...
   PattonParking.vcxproj -> C:\Users\User\Documents\GitHub\PattonParking\x64\Debug\PattonParking.exe
