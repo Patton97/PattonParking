@@ -10,24 +10,21 @@
 class GameManager
 {
     public:
-        // construction
+        friend int main();
         GameManager();
         virtual ~GameManager();
 
-        // accessors
         const bool isWindowOpen() const;
+    private:
+        void initWindow();
 
-        // methods
+        void start();
         void eventUpdate();
         void update();
         void render();
-    private:
-        // methods
-        void start();
-        void initWindow();
+        
         void cycleRenderMode();
 
-        // variables
         sf::RenderWindow* window = nullptr;
         sf::VideoMode* videoMode = nullptr;
         sf::Event ev = sf::Event();

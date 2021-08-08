@@ -5,7 +5,9 @@
 
 class Updateable
 {
-    public:
+    friend class GameManager;
+    friend class GameObject;
+    protected:
         virtual void preEventUpdate() {};
         virtual void eventUpdate(sf::Event& ev) {};
         virtual void update(sf::Time& deltaTime) {};

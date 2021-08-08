@@ -3,6 +3,5 @@
 
 class GameComponent : public Updateable
 {
-
 };
 

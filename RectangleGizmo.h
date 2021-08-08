@@ -12,6 +12,6 @@ class RectangleGizmo : public GameObject
         void renderGizmos(sf::RenderWindow& window) override;
         void update(sf::Time& deltaTime) override;
     private:
-        sf::RectangleShape* m_shape = new sf::RectangleShape(sf::Vector2f(10,10));
+        sf::RectangleShape m_shape = sf::RectangleShape(sf::Vector2f(10,10));
 };
 

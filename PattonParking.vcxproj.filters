@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Gizmos">
+      <UniqueIdentifier>{0bb9e1e0-6303-42cd-ac43-c6dc16802d07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Prefabs">
+      <UniqueIdentifier>{0453744c-ac23-455a-b7f7-99c94d4703cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,20 +101,20 @@
     <ClInclude Include="SpriteWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="prefabs\CarBodyPrefab.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="prefabs\CarWheelPrefab.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CircleGizmo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Gizmos</Filter>
     </ClInclude>
     <ClInclude Include="LineGizmo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Gizmos</Filter>
     </ClInclude>
     <ClInclude Include="RectangleGizmo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Gizmos</Filter>
+    </ClInclude>
+    <ClInclude Include="prefabs\CarWheelPrefab.h">
+      <Filter>Header Files\Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="prefabs\CarBodyPrefab.h">
+      <Filter>Header Files\Prefabs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

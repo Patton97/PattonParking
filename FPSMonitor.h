@@ -4,6 +4,9 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include "GameObject.h"
+
+//// TODO: Now that we have gizmos, should this derive from a 'text' gizmo?
+
 /// <summary>
 /// This class stores logic refering to monitoring the FPS &amp; outputting this information to the screen (if requested)
 /// </summary>

@@ -11,39 +11,27 @@
 class TimeKeeper : public GameObject
 {
     public:
-#pragma region Static Methods
         static TimeKeeper& getInstance()
         {
             static TimeKeeper instance;
             return instance;
         }
-#pragma endregion
-
-#pragma region Member Methods
+        sf::Time& getDeltaTime();
+    protected:
         void start() override;
         void update(sf::Time& deltaTime) override;
         void render(sf::RenderWindow& window) override;
-    
-        sf::Time& getDeltaTime();
-#pragma endregion
-
     private:
-#pragma region Constructors/Desconstructors
-        TimeKeeper()
-        {
-        
-        }
-#pragma endregion
+        TimeKeeper() {}
 
-#pragma region Member Variables
         sf::Clock clock;
         sf::Time previousTime = sf::Time();
         sf::Time currentTime = sf::Time();
         sf::Time deltaTime = sf::Time::Zero;
-#pragma endregion
 
+    // required for singleton pattern
     public:
-        TimeKeeper(TimeKeeper const&) = delete; // required for singleton pattern
-        void operator=(TimeKeeper const&) = delete; // required for singleton pattern
+        TimeKeeper(TimeKeeper const&) = delete;
+        void operator=(TimeKeeper const&) = delete;
 };
 

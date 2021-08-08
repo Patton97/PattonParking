@@ -3,11 +3,16 @@
 class LineGizmo : public GameObject
 {
     public:
-        LineGizmo(sf::Vector2f* lineStart, sf::Vector2f* lineEnd);
+        LineGizmo(GameObject* lineStart, GameObject* lineEnd);
+        LineGizmo(GameObject* lineStart, sf::Vector2f direction);
         ~LineGizmo();
         void renderGizmos(sf::RenderWindow& window) override;
+        void setDirection(sf::Vector2f direction);
     private:
-        sf::Vector2f* m_lineStart = nullptr;
-        sf::Vector2f* m_lineEnd = nullptr;
+        enum class LineType { PointToPoint, InDirection };
+        LineType m_lineType;
+        GameObject* m_lineStart = nullptr;
+        GameObject* m_lineEnd = nullptr;
+        sf::Vector2f m_direction = sf::Vector2f();
 };
 

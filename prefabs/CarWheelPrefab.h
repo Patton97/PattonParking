@@ -11,12 +11,13 @@ class CarWheelPrefab : public GameObject
     public:
         CarWheelPrefab(GameObject* parent, sf::Vector2f positionOffset = sf::Vector2f(0.0f, 0.0f), float rotationOffset = 0.0f);
         ~CarWheelPrefab();
-        void update(sf::Time& deltaTime) override;
-        void render(sf::RenderWindow& window) override;
         void setRotationOffset(float rotationOffset)
         {
             this->m_rotationOffset = rotationOffset;
         }
+    protected:
+        void update(sf::Time& deltaTime) override;
+        void render(sf::RenderWindow& window) override;
     private:
         sf::Vector2f m_positionOffset = sf::Vector2f(0.0f, 0.0f);
         float m_rotationOffset = 0.0f;
