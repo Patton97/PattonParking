@@ -1,4 +1,4 @@
 ﻿  Player.cpp
-C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(44,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(56,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(39,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(47,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   PattonParking.vcxproj -> C:\Users\User\Documents\GitHub\PattonParking\x64\Debug\PattonParking.exe

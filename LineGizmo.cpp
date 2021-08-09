@@ -3,17 +3,19 @@
 #include <math.h>
 #include <iostream>
 
-LineGizmo::LineGizmo(GameObject* lineStart, GameObject* lineEnd)
+LineGizmo::LineGizmo(GameObject* lineStart, GameObject* lineEnd, sf::Color colour)
 {
     this->m_lineStart = lineStart;
     this->m_lineEnd = lineEnd;
     this->m_lineType = LineType::PointToPoint;
+    this->m_colour = colour;
 }
 
-LineGizmo::LineGizmo(GameObject* lineStart, sf::Vector2f direction)
+LineGizmo::LineGizmo(GameObject* lineStart, sf::Vector2f direction, sf::Color colour)
 {
     this->m_lineStart = lineStart;
     this->setDirection(direction);
+    this->m_colour = colour;
 }
 
 LineGizmo::~LineGizmo()

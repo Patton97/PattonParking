@@ -17,12 +17,9 @@ Player::Player()
     this->addChild(*this->m_carWheelBackRight);
     this->addChild(*this->m_carBody);
     this->addChild(*this->m_turningTriangleHypotenuse);
-    this->addChild(*this->m_turningTriangleBottom);
     this->addChild(*this->m_driveShaftGizmo);
     this->addChild(*this->m_frontAxleGizmo);
     this->addChild(*this->m_backAxleGizmo);
-    
-    
     this->addChild(*this->m_turningOriginGizmo);
 
     this->m_transform->setPosition(16.0f, 16.0f);
@@ -38,16 +35,18 @@ void Player::update(sf::Time& deltaTime)
     float driveShaftLength = std::hypotf(this->m_carWheelFront->getPosition().x - this->m_carWheelBack->getPosition().x, this->m_carWheelFront->getPosition().y - this->m_carWheelBack->getPosition().y);
     this->m_turningTriangleHypotenuse->setDirection(sf::Vector2f(driveShaftLength, 0.0f));
 
-    // NEW CAR MOVEMENT CODE
+    
     float tan_angle = tanf((M_PI / 180.0f) * this->m_turnAmount);
-    sf::Vector2f turningOriginRelative = sf::Vector2f(driveShaftLength / tan_angle, 0.0f);
-    *this->m_turningOrigin = this->m_carWheelBack->getPosition() + turningOriginRelative;
-
-    // OLD CAR MOVEMENT CODE
-    float angleRADS = (M_PI / 180.0f) * (this->m_transform->getRotation());
-
-    float fwdX =  sin(angleRADS) * this->m_speed;
-    float fwdY = -cos(angleRADS) * this->m_speed;
+    sf::Vector2f turningOriginRelativeToBackWheel = sf::Vector2f(driveShaftLength / tan_angle, 0.0f);
+    *this->m_turningOrigin = this->m_carWheelBack->getPosition() + turningOriginRelativeToBackWheel;
+    this->m_transform->setOrigin(*this->m_turningOrigin);
+    this->m_transform->rotate(tanf(this->m_turnAmount) * this->m_speed);
+    this->m_transform->setOrigin(this->getPosition());
+    std::cout << std::fabsf(this->m_turnAmount) << std::endl;
+    
+    float angle_rads = (M_PI / 180.0f) * (this->getRotation());
+    float fwdX =  sin(angle_rads) * this->m_speed;
+    float fwdY = -cos(angle_rads) * this->m_speed;
 
     this->m_transform->move(fwdX, fwdY);
 }
