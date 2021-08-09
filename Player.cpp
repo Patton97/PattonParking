@@ -32,8 +32,7 @@ void Player::update(sf::Time& deltaTime)
     this->m_carWheelFrontRight->setRotationOffset(this->m_turnAmount);
 
     float driveShaftLength = std::hypotf(this->m_carWheelFront->getPosition().x - this->m_carWheelBack->getPosition().x, this->m_carWheelFront->getPosition().y - this->m_carWheelBack->getPosition().y);
-    sf::Vector2f renamethisvec = sf::Vector2f(driveShaftLength, 0.0f);
-    this->m_turningTriangleHypotenuse->setDirection(renamethisvec);
+    this->m_turningTriangleHypotenuse->setDirection(sf::Vector2f(driveShaftLength, 0.0f));
 
     //V.x = cos(A)
     //V.y = sin(A)
