@@ -17,9 +17,13 @@ Player::Player()
     this->addChild(*this->m_carWheelBackRight);
     this->addChild(*this->m_carBody);
     this->addChild(*this->m_turningTriangleHypotenuse);
+    this->addChild(*this->m_turningTriangleBottom);
     this->addChild(*this->m_driveShaftGizmo);
     this->addChild(*this->m_frontAxleGizmo);
     this->addChild(*this->m_backAxleGizmo);
+    
+    
+    this->addChild(*this->m_turningOriginGizmo);
 
     this->m_transform->setPosition(16.0f, 16.0f);
 }
@@ -34,8 +38,10 @@ void Player::update(sf::Time& deltaTime)
     float driveShaftLength = std::hypotf(this->m_carWheelFront->getPosition().x - this->m_carWheelBack->getPosition().x, this->m_carWheelFront->getPosition().y - this->m_carWheelBack->getPosition().y);
     this->m_turningTriangleHypotenuse->setDirection(sf::Vector2f(driveShaftLength, 0.0f));
 
-    //V.x = cos(A)
-    //V.y = sin(A)
+    // NEW CAR MOVEMENT CODE
+    float tan_angle = tanf((M_PI / 180.0f) * this->m_turnAmount);
+    sf::Vector2f turningOriginRelative = sf::Vector2f(driveShaftLength / tan_angle, 0.0f);
+    *this->m_turningOrigin = this->m_carWheelBack->getPosition() + turningOriginRelative;
 
     // OLD CAR MOVEMENT CODE
     float angleRADS = (M_PI / 180.0f) * (this->m_transform->getRotation());

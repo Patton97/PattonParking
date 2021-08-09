@@ -39,9 +39,13 @@ class Player : public GameObject
         /// </see>
         /// </summary>
         LineGizmo* m_turningTriangleHypotenuse = new LineGizmo(this->m_carWheelFront, sf::Vector2f(20.0f, 0.0f));
+        LineGizmo* m_turningTriangleBottom = new LineGizmo(this->m_carWheelBack, sf::Vector2f(1000.0f, 0.0f));
         LineGizmo* m_driveShaftGizmo = new LineGizmo(this->m_carWheelFront, this->m_carWheelBack);
         LineGizmo* m_frontAxleGizmo = new LineGizmo(this->m_carWheelFrontLeft, this->m_carWheelFrontRight);
         LineGizmo* m_backAxleGizmo = new LineGizmo(this->m_carWheelBackLeft, this->m_carWheelBackRight);
+
+        sf::Vector2f* m_turningOrigin = new sf::Vector2f(0.0f, 0.0f);
+        CircleGizmo* m_turningOriginGizmo = new CircleGizmo(m_turningOrigin, 2.0f);
 #pragma endregion
 };
 

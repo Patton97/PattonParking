@@ -1,17 +1,4 @@
-﻿  CircleGizmo.cpp
-  FPSMonitor.cpp
-  GameManager.cpp
-  GameObject.cpp
-  LineGizmo.cpp
-C:\Users\User\Documents\GitHub\PattonParking\LineGizmo.cpp(39,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Player.cpp
-C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(42,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  PlayerController.cpp
-  RectangleGizmo.cpp
-  TimeKeeper.cpp
-  main.cpp
-  CarBodyPrefab.cpp
-  CarWheelPrefab.cpp
-C:\Users\User\Documents\GitHub\PattonParking\prefabs\CarWheelPrefab.cpp(27,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+﻿  Player.cpp
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(44,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\PattonParking\Player.cpp(56,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   PattonParking.vcxproj -> C:\Users\User\Documents\GitHub\PattonParking\x64\Debug\PattonParking.exe
