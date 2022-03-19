@@ -32,21 +32,41 @@ void Player::update(sf::Time& deltaTime)
     this->m_carWheelFrontLeft->setRotationOffset(this->m_turnAmount);
     this->m_carWheelFrontRight->setRotationOffset(this->m_turnAmount);
 
-    float driveShaftLength = std::hypotf(this->m_carWheelFront->getPosition().x - this->m_carWheelBack->getPosition().x, this->m_carWheelFront->getPosition().y - this->m_carWheelBack->getPosition().y);
-    this->m_turningTriangleHypotenuse->setDirection(sf::Vector2f(driveShaftLength, 0.0f));
+    float driveShaftLength = std::hypotf(
+        this->m_carWheelFront->getPosition().x - this->m_carWheelBack->getPosition().x, 
+        this->m_carWheelFront->getPosition().y - this->m_carWheelBack->getPosition().y
+    );
 
+    sf::Vector2f frontWheelToTurningOrigin = sf::Vector2f(driveShaftLength, 0.0f);
+    if (this->m_turnAmount < 0)
+    {
+        frontWheelToTurningOrigin.x *= -1;
+    }
+    this->m_turningTriangleHypotenuse->setDirection(frontWheelToTurningOrigin);
+
+    float turnAmountRads = (M_PI / 180.0f) * this->m_turnAmount;
+    float tanTurnAmountRads = tanf(turnAmountRads);
+    float turningOriginToBackWheelDistance = frontWheelToTurningOrigin.x / tanTurnAmountRads;
     
-    float tan_angle = tanf((M_PI / 180.0f) * this->m_turnAmount);
-    sf::Vector2f turningOriginRelativeToBackWheel = sf::Vector2f(driveShaftLength / tan_angle, 0.0f);
-    *this->m_turningOrigin = this->m_carWheelBack->getPosition() + turningOriginRelativeToBackWheel;
+    sf::Vector2f turningOriginRelativeToBackWheel = sf::Vector2f(turningOriginToBackWheelDistance, 0.0f);
+
+    if (this->m_turnAmount < 0)
+    {
+        turningOriginRelativeToBackWheel *= -1.0f;
+    }
+
+    this->m_turningOrigin->x = this->m_carWheelBack->getPosition().x + (turningOriginRelativeToBackWheel.x * cos((M_PI / 180.0f) * (this->getRotation())));
+    this->m_turningOrigin->y = this->m_carWheelBack->getPosition().y + (turningOriginRelativeToBackWheel.x * sin((M_PI / 180.0f) * (this->getRotation())));
+
+    std::cout << this->m_turningOrigin->x << ", " << this->m_turningOrigin->y << std::endl;
+
     this->m_transform->setOrigin(*this->m_turningOrigin);
     this->m_transform->rotate(tanf(this->m_turnAmount) * this->m_speed);
     this->m_transform->setOrigin(this->getPosition());
-    std::cout << std::fabsf(this->m_turnAmount) << std::endl;
-    
-    float angle_rads = (M_PI / 180.0f) * (this->getRotation());
-    float fwdX =  sin(angle_rads) * this->m_speed;
-    float fwdY = -cos(angle_rads) * this->m_speed;
+
+    float rot_angle_rads = (M_PI / 180.0f) * (this->getRotation());
+    float fwdX =  sin(rot_angle_rads) * this->m_speed;
+    float fwdY = -cos(rot_angle_rads) * this->m_speed;
 
     this->m_transform->move(fwdX, fwdY);
 }
