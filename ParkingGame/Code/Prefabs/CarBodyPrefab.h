@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GameObject.h"
-#include "SpriteWrapper.h"
+#include <Engine/GameObject.h>
+#include <Engine/SpriteWrapper.h>
 
 class CarBodyPrefab : public GameObject
 {

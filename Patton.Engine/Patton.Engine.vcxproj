@@ -18,6 +18,30 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Code\Engine\FPSMonitor.cpp" />
+    <ClCompile Include="Code\Engine\GameComponent.cpp" />
+    <ClCompile Include="Code\Engine\GameObject.cpp" />
+    <ClCompile Include="Code\Engine\Gizmos\CircleGizmo.cpp" />
+    <ClCompile Include="Code\Engine\Gizmos\LineGizmo.cpp" />
+    <ClCompile Include="Code\Engine\Gizmos\RectangleGizmo.cpp" />
+    <ClCompile Include="Code\Engine\Renderable.cpp" />
+    <ClCompile Include="Code\Engine\SpriteWrapper.cpp" />
+    <ClCompile Include="Code\Engine\TimeKeeper.cpp" />
+    <ClCompile Include="Code\Engine\Updateable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Code\Engine\FPSMonitor.h" />
+    <ClInclude Include="Code\Engine\GameComponent.h" />
+    <ClInclude Include="Code\Engine\GameObject.h" />
+    <ClInclude Include="Code\Engine\Gizmos\CircleGizmo.h" />
+    <ClInclude Include="Code\Engine\Gizmos\LineGizmo.h" />
+    <ClInclude Include="Code\Engine\Gizmos\RectangleGizmo.h" />
+    <ClInclude Include="Code\Engine\Renderable.h" />
+    <ClInclude Include="Code\Engine\SpriteWrapper.h" />
+    <ClInclude Include="Code\Engine\TimeKeeper.h" />
+    <ClInclude Include="Code\Engine\Updateable.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -27,26 +51,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -152,31 +176,6 @@
       <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Code\FPSMonitor.cpp" />
-    <ClCompile Include="Code\GameComponent.cpp" />
-    <ClCompile Include="Code\GameObject.cpp" />
-    <ClCompile Include="Code\Gizmos\CircleGizmo.cpp" />
-    <ClCompile Include="Code\Gizmos\LineGizmo.cpp" />
-    <ClCompile Include="Code\Gizmos\RectangleGizmo.cpp" />
-    <ClCompile Include="Code\Renderable.cpp" />
-    <ClCompile Include="Code\SpriteWrapper.cpp" />
-    <ClCompile Include="Code\TimeKeeper.cpp" />
-    <ClCompile Include="Code\Updateable.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Code\FPSMonitor.h" />
-    <ClInclude Include="Code\GameComponent.h" />
-    <ClInclude Include="Code\GameObject.h" />
-    <ClInclude Include="Code\Gizmos\CircleGizmo.h" />
-    <ClInclude Include="Code\Gizmos\LineGizmo.h" />
-    <ClInclude Include="Code\Gizmos\RectangleGizmo.h" />
-    <ClInclude Include="Code\Renderable.h" />
-    <ClInclude Include="Code\SpriteWrapper.h" />
-    <ClInclude Include="Code\TimeKeeper.h" />
-    <ClInclude Include="Code\Updateable.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

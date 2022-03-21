@@ -1,7 +1,7 @@
 #pragma once
 #include "GameManager.h"
-#include "TimeKeeper.h"
-#include "FPSMonitor.h"
+#include <Engine/TimeKeeper.h>
+#include <Engine/FPSMonitor.h>
 #include "Player.h"
 
 GameManager::GameManager()

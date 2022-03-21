@@ -5,7 +5,7 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>
 
-#include "GameObject.h"
+#include <Engine/GameObject.h>
 
 class GameManager
 {

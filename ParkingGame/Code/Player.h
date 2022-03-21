@@ -2,12 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GameObject.h"
+#include <Engine/GameObject.h>
+#include <Engine/Gizmos/CircleGizmo.h>
+#include <Engine/Gizmos/LineGizmo.h>
 
 #include "Prefabs/CarBodyPrefab.h"
 #include "Prefabs/CarWheelPrefab.h"
-#include "Gizmos/CircleGizmo.h"
-#include "Gizmos/LineGizmo.h"
 
 class Player : public GameObject
 {

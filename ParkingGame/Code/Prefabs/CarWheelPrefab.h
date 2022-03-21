@@ -2,9 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GameObject.h"
-#include "SpriteWrapper.h"
-#include "Gizmos/RectangleGizmo.h"
+#include <Engine/GameObject.h>
+#include <Engine/SpriteWrapper.h>
+#include <Engine/Gizmos/RectangleGizmo.h>
 
 class CarWheelPrefab : public GameObject
 {

@@ -2,8 +2,11 @@
 #include <SFML\Window\Event.hpp>
 #include <SFML\System.hpp>
 #include <SFML\Graphics\Transformable.hpp>
-#include "GameComponent.h"
+
+#include <Engine/GameComponent.h>
+
 #include "Player.h"
+
 class PlayerController : public GameComponent
 {
     public:

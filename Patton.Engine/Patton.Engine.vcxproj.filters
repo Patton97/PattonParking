@@ -15,69 +15,66 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\FPSMonitor.cpp">
+    <ClCompile Include="Code\Engine\FPSMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\GameComponent.cpp">
+    <ClCompile Include="Code\Engine\GameComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\GameObject.cpp">
+    <ClCompile Include="Code\Engine\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Renderable.cpp">
+    <ClCompile Include="Code\Engine\Renderable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\SpriteWrapper.cpp">
+    <ClCompile Include="Code\Engine\SpriteWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\TimeKeeper.cpp">
+    <ClCompile Include="Code\Engine\TimeKeeper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Updateable.cpp">
+    <ClCompile Include="Code\Engine\Updateable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Gizmos\CircleGizmo.cpp">
+    <ClCompile Include="Code\Engine\Gizmos\CircleGizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Gizmos\LineGizmo.cpp">
+    <ClCompile Include="Code\Engine\Gizmos\LineGizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Gizmos\RectangleGizmo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Code\Engine\Gizmos\RectangleGizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\FPSMonitor.h">
+    <ClInclude Include="Code\Engine\FPSMonitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\GameComponent.h">
+    <ClInclude Include="Code\Engine\GameComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\GameObject.h">
+    <ClInclude Include="Code\Engine\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Renderable.h">
+    <ClInclude Include="Code\Engine\Renderable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\SpriteWrapper.h">
+    <ClInclude Include="Code\Engine\SpriteWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\TimeKeeper.h">
+    <ClInclude Include="Code\Engine\TimeKeeper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Updateable.h">
+    <ClInclude Include="Code\Engine\Updateable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Gizmos\CircleGizmo.h">
+    <ClInclude Include="Code\Engine\Gizmos\CircleGizmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Gizmos\LineGizmo.h">
+    <ClInclude Include="Code\Engine\Gizmos\LineGizmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Gizmos\RectangleGizmo.h">
+    <ClInclude Include="Code\Engine\Gizmos\RectangleGizmo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
