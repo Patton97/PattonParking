@@ -4,10 +4,10 @@
 
 #include "GameObject.h"
 
-#include "prefabs\CarBodyPrefab.h"
-#include "prefabs\CarWheelPrefab.h"
-#include "CircleGizmo.h"
-#include "LineGizmo.h"
+#include "Prefabs/CarBodyPrefab.h"
+#include "Prefabs/CarWheelPrefab.h"
+#include "Gizmos/CircleGizmo.h"
+#include "Gizmos/LineGizmo.h"
 
 class Player : public GameObject
 {

@@ -4,7 +4,7 @@
 
 #include "GameObject.h"
 #include "SpriteWrapper.h"
-#include "RectangleGizmo.h"
+#include "Gizmos/RectangleGizmo.h"
 
 class CarWheelPrefab : public GameObject
 {
