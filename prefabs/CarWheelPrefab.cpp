@@ -32,8 +32,6 @@ void CarWheelPrefab::update(sf::Time& deltaTime)
     this->m_transform->setPosition(newPosition);
 
     this->m_transform->setRotation(this->m_parent->getRotation() + this->m_rotationOffset);
-
-    //std::cout << "RotOffset: " << this->m_rotationOffset << std::endl;
 }
 
 void CarWheelPrefab::render(sf::RenderWindow& window)
