@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Engine\Dummy.cpp" />
     <ClCompile Include="Code\Engine\FPSMonitor.cpp" />
     <ClCompile Include="Code\Engine\GameComponent.cpp" />
     <ClCompile Include="Code\Engine\GameObject.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="Code\Engine\Updateable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Engine\Dummy.h" />
     <ClInclude Include="Code\Engine\FPSMonitor.h" />
     <ClInclude Include="Code\Engine\GameComponent.h" />
     <ClInclude Include="Code\Engine\GameObject.h" />
@@ -152,7 +154,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;D:\SFML\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>

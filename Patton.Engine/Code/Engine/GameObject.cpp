@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include <assert.h> 
+#include <cassert>
 
 void GameObject::update(sf::Time& deltaTime)
 {
@@ -7,7 +7,7 @@ void GameObject::update(sf::Time& deltaTime)
     {
         component->update(deltaTime);
     }*/
-    for (auto& child : this->m_children)
+    for (const auto& child : this->m_children)
     {
         child->update(deltaTime);
     }
@@ -15,7 +15,7 @@ void GameObject::update(sf::Time& deltaTime)
 
 void GameObject::render(sf::RenderWindow& window)
 {
-    for (auto& child : this->m_children)
+    for (const auto& child : this->m_children)
     {
         child->render(window);
     }
@@ -23,7 +23,7 @@ void GameObject::render(sf::RenderWindow& window)
 
 void GameObject::renderGizmos(sf::RenderWindow& window)
 {
-    for (auto& child : this->m_children)
+    for (const auto& child : this->m_children)
     {
         child->renderGizmos(window);
     }
@@ -57,7 +57,7 @@ void GameObject::addComponent(GameComponent& componentToAdd)
     //this->m_components.push_back(&componentToAdd);
 
     const char* componentTypeName = typeid(componentToAdd).name();
-    std::map<std::string, std::vector<GameComponent*>>::iterator it = this->m_componentsMap.find(componentTypeName);
+    const auto it = this->m_componentsMap.find(componentTypeName);
     std::vector<GameComponent*> componentVector;
     if (it != this->m_componentsMap.end())
     {
@@ -75,7 +75,7 @@ void GameObject::removeComponent(GameComponent& componentToRemove)
     //this->m_components.push_back(&componentToAdd);
 
     const char* componentTypeName = typeid(componentToRemove).name();
-    std::map<std::string, std::vector<GameComponent*>>::iterator it = this->m_componentsMap.find(componentTypeName);
+    const auto it = this->m_componentsMap.find(componentTypeName);
 
     if (it == this->m_componentsMap.end())
     {
@@ -103,7 +103,7 @@ void GameObject::removeComponent(GameComponent& componentToRemove)
         return;
     }
 
-    this->removeComponent(componentVector, indexToRemove);
+    removeComponent(componentVector, indexToRemove);
 }
 
 void GameObject::removeComponent(std::vector<GameComponent*>& componentVector, int indexToRemove)
@@ -116,7 +116,7 @@ std::vector<T*>* GameObject::getComponents()
 {
     //assert(std::is_base_of<GameComponent, T>);
     const char* componentTypeName = typeid(T).name();
-    std::map<std::string, std::vector<GameComponent*>>::iterator it = this->m_componentsMap.find(componentTypeName);
+    const auto it = this->m_componentsMap.find(componentTypeName);
 
     if (it == this->m_componentsMap.end())
     {

@@ -45,6 +45,9 @@
     <ClCompile Include="Code\Engine\Gizmos\RectangleGizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Engine\Dummy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Engine\FPSMonitor.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Engine\Gizmos\RectangleGizmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Engine\Dummy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
