@@ -32,8 +32,8 @@ class GameObject : public Updateable, public Renderable
 
         void addComponent(GameComponent& componentToAdd);
         void removeComponent(GameComponent& componentRemove);
-        template<class T> T& getComponent();
-        template<class T> std::vector<T*> getComponents();
+        template<class T> T* getComponent();
+        template<class T> std::vector<T*>* getComponents();
     protected:
         virtual void start() {};
         virtual void update(sf::Time& deltaTime) override;

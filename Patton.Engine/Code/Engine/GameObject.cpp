@@ -112,7 +112,7 @@ void GameObject::removeComponent(std::vector<GameComponent*>& componentVector, i
 }
 
 template<class T>
-std::vector<T*> GameObject::getComponents()
+std::vector<T*>* GameObject::getComponents()
 {
     //assert(std::is_base_of<GameComponent, T>);
     const char* componentTypeName = typeid(T).name();
@@ -120,14 +120,14 @@ std::vector<T*> GameObject::getComponents()
 
     if (it == this->m_componentsMap.end())
     {
-        return;
+        return nullptr;
     }
 
-    return it->second;
+    return &it->second;
 }
 
 template<class T>
-T& GameObject::getComponent()
+T* GameObject::getComponent()
 {
-    return this->getComponents<T>()[0];
+    return (*this->getComponents<T>())[0];
 }
