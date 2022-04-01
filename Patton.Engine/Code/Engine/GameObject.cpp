@@ -58,7 +58,8 @@ void GameObject::addComponent(GameComponent& componentToAdd)
     auto componentVector = this->getComponents(componentTypeName);
     if (componentVector == nullptr)
     {
-        const bool insertSuccess = this->m_componentsMap.insert({ componentTypeName, std::vector<GameComponent*>() }).second;
+        componentVector = new std::vector<GameComponent*>();
+        const bool insertSuccess = this->m_componentsMap.insert({ componentTypeName, *componentVector }).second;
         if (!insertSuccess)
         {
              //throw? return false? 
