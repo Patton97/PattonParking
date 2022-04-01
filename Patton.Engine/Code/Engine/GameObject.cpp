@@ -54,14 +54,15 @@ void GameObject::removeChild(GameObject& child)
 
 void GameObject::addComponent(GameComponent& componentToAdd)
 {
-    //this->m_components.push_back(&componentToAdd);
-
     const char* componentTypeName = typeid(componentToAdd).name();
     auto componentVector = this->getComponents(componentTypeName);
     if (componentVector == nullptr)
     {
-        componentVector = new std::vector<GameComponent*>();
-        this->m_componentsMap.insert({ componentTypeName, *componentVector });
+        const bool insertSuccess = this->m_componentsMap.insert({ componentTypeName, std::vector<GameComponent*>() }).second;
+        if (!insertSuccess)
+        {
+             //throw? return false? 
+        }
     }
 
     componentVector->push_back(&componentToAdd);
@@ -131,7 +132,7 @@ std::vector<GameComponent*>* GameObject::getComponents(const char* typeName)
 template<class T>
 T* GameObject::getComponent()
 {
-    std::vector<T*>* componentVector = this->getComponents<T>();
+    auto componentVector = this->getComponents<T>();
     if (componentVector == nullptr || componentVector->capacity() == 0)
     {
         return nullptr;
