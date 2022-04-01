@@ -45,6 +45,7 @@ class GameObject : public Updateable, public Renderable
         GameObject* m_parent = nullptr;
     private:
         static void removeComponent(std::vector<GameComponent*>& componentVector, int indexToRemove);
+        std::vector<GameComponent*>* getComponents(const char* typeName);
         std::vector<GameObject*> m_children = {};
         //std::vector<GameComponent*> m_components = {};
         std::map<std::string, std::vector<GameComponent*>> m_componentsMap = {};

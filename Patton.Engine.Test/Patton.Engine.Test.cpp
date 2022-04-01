@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include <Engine/Dummy.h>
-#include <SFML/Graphics/Transformable.hpp>
+
+#include <Engine/GameObject.h>
+#include <Engine/GameObject.cpp>
+#include <Engine/GameComponent.h>
+#include "Engine/Gizmos/LineGizmo.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -13,15 +16,15 @@ namespace PattonEngineTest
         
         TEST_METHOD(TestMethod1)
         {
-            auto dummy = new Dummy();
-            dummy->myTestMethod();
-            /*
-            GameComponent* component = new GameComponent();
+            // Dummy dummy;
+            // auto transform = dummy.myTestMethod();
+            // Assert::IsNotNull(&transform);
+            const auto gameObject = new LineGizmo(nullptr, nullptr);
+            const auto component = new GameComponent();
             gameObject->addComponent(*component);
 
-            GameComponent* retrievedComponent = gameObject->getComponent<GameComponent>();
+            const auto retrievedComponent = gameObject->getComponent<GameComponent>();
             Assert::IsNotNull(retrievedComponent);
-            */
         }
     };
 }

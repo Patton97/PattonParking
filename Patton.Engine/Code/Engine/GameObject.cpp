@@ -57,17 +57,14 @@ void GameObject::addComponent(GameComponent& componentToAdd)
     //this->m_components.push_back(&componentToAdd);
 
     const char* componentTypeName = typeid(componentToAdd).name();
-    const auto it = this->m_componentsMap.find(componentTypeName);
-    std::vector<GameComponent*> componentVector;
-    if (it != this->m_componentsMap.end())
+    auto componentVector = this->getComponents(componentTypeName);
+    if (componentVector == nullptr)
     {
-        componentVector = it->second;
+        componentVector = new std::vector<GameComponent*>();
+        this->m_componentsMap.insert({ componentTypeName, *componentVector });
     }
-    else
-    {
-        componentVector = {};
-    }
-    componentVector.push_back(&componentToAdd);
+
+    componentVector->push_back(&componentToAdd);
 }
 
 void GameObject::removeComponent(GameComponent& componentToRemove)
@@ -116,7 +113,12 @@ std::vector<T*>* GameObject::getComponents()
 {
     //assert(std::is_base_of<GameComponent, T>);
     const char* componentTypeName = typeid(T).name();
-    const auto it = this->m_componentsMap.find(componentTypeName);
+    return getComponents(componentTypeName);
+}
+
+std::vector<GameComponent*>* GameObject::getComponents(const char* typeName)
+{
+    const auto it = this->m_componentsMap.find(typeName);
 
     if (it == this->m_componentsMap.end())
     {
@@ -129,5 +131,10 @@ std::vector<T*>* GameObject::getComponents()
 template<class T>
 T* GameObject::getComponent()
 {
-    return (*this->getComponents<T>())[0];
+    std::vector<T*>* componentVector = this->getComponents<T>();
+    if (componentVector == nullptr || componentVector->capacity() == 0)
+    {
+        return nullptr;
+    }
+    return (*componentVector)[0];
 }
